@@ -12,33 +12,33 @@ def add_device():
             "error": "data not in correct format"
         }, 400
     
-    id = data.get("id")
+    device_id = data.get("id")
 
-    if id is None:
+    if device_id is None:
         return {"error": "Device ID is required"}, 400
 
-    if NETWORK.getDevice(id) is not None:
+    if NETWORK.getDevice(device_id) is not None:
         return {"error": "Device ID already exists"}, 409
 
     try:
         device_type = network_engine.DeviceType[data.get("type", "Computer")]
-    except:
+    except KeyError:
         return{
             "data type": "invalid"
         }, 400
-    if data["ip"] is None:
+    if data.get("ip") is None:
         return {
             "ip": "No IP address was entered"
         }, 400
     # ip = data["ip"]
-    device = network_engine.Device(id, device_type, data["ip"])
+    device = network_engine.Device(device_id, device_type, data["ip"])
 
     NETWORK.addDevice(device) # as C++ can't accept 3 diff
     # parameters we needed to create the device var
 
     return {
         "device": "added",
-        "device ID": id
+        "device ID": device_id
     }, 201
 
 
