@@ -34,7 +34,8 @@ PYBIND11_MODULE(network_engine, m)
         .def("addConnection", &Network::addConnection)
         .def("getDevice", &Network::getDevice,
              py::return_value_policy::reference)
-        .def("getConnections", &Network::getConnections);
+        .def("getConnections", &Network::getConnections)
+        .def("getAllDevices", &Network::getAllDevices, py::return_value_policy::reference_internal);
 
     py::class_<BFS>(m, "BFS")
         .def(py::init<>())

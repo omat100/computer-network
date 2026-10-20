@@ -4,6 +4,36 @@ from ..service.network_state import NETWORK
 from ....engine.build import network_engine
 device_bp = Blueprint("device", __name__, url_prefix="/api/device")
 
+@device_bp.get("/")
+def get_devices():
+    devices = NETWORK.getAllDevices()
+
+    return {
+        "devices": [
+            {
+                "id": device.getId(),
+                "type": str(device.getType()),
+                "ip": device.getIpAddress()
+            }
+            for device in devices
+        ]
+    }, 200
+
+@device_bp.get("/<int:device_id>")
+def get_device():
+
+    device = NETWORK.getDevice(device_id)
+    if device is None:
+        return {
+            "device": "No such Device exists"
+        }, 400
+
+    return {
+        "id": device.getId(),
+        "type": str(device.getType()),
+        "ip": device.getIpAddress()
+    }, 200
+
 @device_bp.post("/add")
 def add_device():
     data = request.get_json()

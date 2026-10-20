@@ -32,3 +32,12 @@ std::vector<Connection *> Network::getConnections(int id) const
         return {};
     return it->second;
 }
+std::vector<Device *> Network::getAllDevices() const
+{
+    std::vector<Device *> result;
+
+    for (const auto &pair : devices)
+        result.push_back(pair.second);
+
+    return result;
+}

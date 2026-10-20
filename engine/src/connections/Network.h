@@ -15,4 +15,5 @@ public:
     void addConnection(int sourceId, int destinationId, int cost);
     Device *getDevice(int id) const;
     std::vector<Connection *> getConnections(int id) const;
+    std::vector<Device *> getAllDevices() const;
 };
