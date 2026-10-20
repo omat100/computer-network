@@ -12,6 +12,10 @@ PYBIND11_MODULE(network_engine, m)
 {
     m.doc() = "C++ network and pathfinding engine";
 
+    py::enum_<Device::DeviceType>(m, "DeviceType")
+        .value("Computer", Device::Computer)
+        .value("Switch", Device::Switch);
+
     py::class_<Device>(m, "Device")
         .def(py::init<int, Device::DeviceType, std::string>())
         .def("getId", &Device::getId)
