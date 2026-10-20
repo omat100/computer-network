@@ -1,0 +1,6 @@
+venv/
+.git/
+frontend/
+**/__pycache__/
+backend/engine/build/
+*.so

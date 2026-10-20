@@ -36,7 +36,7 @@ def get_device(device_id):
 
 @device_bp.post("/add")
 def add_device():
-    data = request.get_json()
+    data = request.get_json(silent=True) or {}
     if not data:
         return {
             "error": "data not in correct format"
