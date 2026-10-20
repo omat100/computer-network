@@ -50,12 +50,13 @@ def add_device():
     if NETWORK.getDevice(device_id) is not None:
         return {"error": "Device ID already exists"}, 409
 
-    try:
-        device_type = network_engine.DeviceType[data.get("type", "Computer")]
-    except KeyError:
-        return{
-            "data type": "invalid"
-        }, 400
+    device_type = getattr( # was bug there somehow got this no idea what this is
+        network_engine.DeviceType,
+        data.get("type", "Computer"),
+        None
+    )
+    if device_type is None:
+        return {"error": "Invalid device type"}, 400
     if data.get("ip") is None:
         return {
             "ip": "No IP address was entered"

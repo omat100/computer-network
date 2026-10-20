@@ -6,9 +6,9 @@ connection_bp = Blueprint("connection", __name__, url_prefix="/api/connection")
 def create_connection():
     data = request.get_json()
     
-    source = data.get_json("source")
-    destination = data.get_json("destination")
-    cost = data.get_json("cost")
+    source = data.get("source")
+    destination = data.get("destination")
+    cost = data.get("cost")
 
     if source is None or cost is None or destination is None:
         return{
