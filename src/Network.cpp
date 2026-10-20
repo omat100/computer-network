@@ -25,3 +25,10 @@ Device *Network::getDevice(int id) const
         return nullptr;
     return it->second;
 }
+std::vector<Connection *> Network::getConnections(int id) const
+{
+    auto it = adjacencyList.find(id);
+    if (it == adjacencyList.end())
+        return {};
+    return it->second;
+}

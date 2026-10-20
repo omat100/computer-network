@@ -14,5 +14,5 @@ public:
     void addDevice(Device *device);
     void addConnection(int sourceId, int destinationId, int cost);
     Device *getDevice(int id) const;
-    std::vector<Connection *> getConnections(int id);
+    std::vector<Connection *> getConnections(int id) const;
 };
