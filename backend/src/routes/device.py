@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 import random
 from ..service.network_state import NETWORK
-from ....engine.build import network_engine
+import network_engine
 device_bp = Blueprint("device", __name__, url_prefix="/api/device")
 
 @device_bp.get("/")
