@@ -17,3 +17,11 @@ void Network::addConnection(int sourceId, int destinationId, int cost)
     }
     adjacencyList[sourceId].push_back(connection);
 }
+
+Device *Network::getDevice(int id) const
+{
+    auto it = devices.find(id);
+    if (it == devices.end())
+        return nullptr;
+    return it->second;
+}
