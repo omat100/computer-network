@@ -17,6 +17,6 @@ def route():
     if NETWORK.getDevice(destination) is None:
         return {"error": "No such destination exists"}, 400
 
-    path = BFS.findPath(NETWORK, source, destination)
+    path = BFS.findPath(NETWORK.engine, source, destination)
 
     return {"path":list(path)}, 200

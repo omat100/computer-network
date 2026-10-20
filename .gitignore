@@ -1,4 +1,35 @@
-/engine/build
-/venv
-*.pyc
-/backend/engine/build
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# C++ / pybind11 build output
+backend/engine/build/
+*.so
+*.pyd
+*.dylib
+*.dll
+*.o
+*.obj
+*.out
+
+# Node / Vite
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

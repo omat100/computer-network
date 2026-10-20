@@ -73,3 +73,16 @@ def add_device():
     }, 201
 
 
+@device_bp.delete("/<int:device_id>")
+def delete_device(device_id):
+    if NETWORK.getDevice(device_id) is None:
+        return {"error": "No such Device exists"}, 404
+
+    NETWORK.delete_device(device_id)
+
+    return {
+        "device": "deleted",
+        "device ID": device_id
+    }, 200
+
+

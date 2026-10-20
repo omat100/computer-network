@@ -37,7 +37,7 @@ def create_connection():
     }, 201
 
 @connection_bp.post("/<int:device_id>")
-def get_connection():
+def get_connection(device_id):
     device = NETWORK.getDevice(device_id)
     if device is None:
         return {
@@ -53,4 +53,21 @@ def get_connection():
                 "cost": connection.getCost()
             } for connection in connections
         ]
+    }, 200
+
+
+@connection_bp.delete("/<int:source>/<int:destination>")
+def delete_connection(source, destination):
+    if NETWORK.getDevice(source) is None:
+        return {"error": "No Source"}, 404
+    if NETWORK.getDevice(destination) is None:
+        return {"error": "No destination"}, 404
+
+    if not NETWORK.delete_connection(source, destination):
+        return {"error": "No such connection exists"}, 404
+
+    return {
+        "connection": "deleted",
+        "source": source,
+        "destination": destination
     }, 200
