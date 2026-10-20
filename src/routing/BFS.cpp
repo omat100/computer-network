@@ -23,9 +23,10 @@ std::vector<int> BFS::findPath(const Network &network, int sourceId, int destina
                 continue;
             visited.insert(comp->getDestinationId());
 
+            parent[comp->getDestinationId()] = currentId;
+            q.push(comp->getDestinationId());
             if (comp->getDestinationId() == destinationId)
                 break;
-            q.push(comp->getDestinationId());
         }
     }
 }
