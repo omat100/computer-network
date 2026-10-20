@@ -1,4 +1,9 @@
+import sys
+import os
 from flask import Flask
+ENGINE_BUILD = os.path.join(os.path.dirname(__file__), "engine", "build")
+sys.path.insert(0, ENGINE_BUILD)
+
 from .src.routes.test import test_bp
 from .src.routes.device import device_bp
 app = Flask(__name__)
