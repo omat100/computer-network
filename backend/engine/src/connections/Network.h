@@ -7,13 +7,13 @@
 class Network
 {
 private:
-    std::unordered_map<int, Device *> devices;
-    std::unordered_map<int, std::vector<Connection *>> adjacencyList;
+    std::unordered_map<int, Device> devices;
+    std::unordered_map<int, std::vector<Connection>> adjacencyList;
 
 public:
-    void addDevice(Device *device);
+    void addDevice(const Device &device);
     void addConnection(int sourceId, int destinationId, int cost);
-    Device *getDevice(int id) const;
-    std::vector<Connection *> getConnections(int id) const;
-    std::vector<Device *> getAllDevices() const;
+    Device *getDevice(int id);
+    std::vector<Connection> getConnections(int id) const;
+    std::vector<Device> getAllDevices() const;
 };
