@@ -5,13 +5,16 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_executable(NetworkProject
-    src/main.cpp
+find_package(Python REQUIRED COMPONENTS Interpreter Development.Module)
+find_package(pybind11 CONFIG REQUIRED)
+
+pybind11_add_module(network_engine
+    src/bindings.cpp
     src/connections/Network.cpp
     src/routing/BFS.cpp
 )
 
-target_include_directories(NetworkProject PRIVATE
+target_include_directories(network_engine PRIVATE
     src/connections
     src/routing
 )
