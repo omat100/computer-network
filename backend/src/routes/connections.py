@@ -35,3 +35,22 @@ def create_connection():
         "destination": destination,
         "cost": cost
     }, 201
+
+@connection_bp.post("/<int:device_id>")
+def get_connection():
+    device = NETWORK.getDevice(device_id)
+    if device is None:
+        return {
+            "Device": "No such device found"
+        }, 400
+
+    connections = NETWORK.getConnections(device_id)
+    return {
+        "device_id": device_id,
+        "connections": [
+            {
+                "destination": connection.getDestinationId(),
+                "cost": connection.getCost()
+            } for connection in connections
+        ]
+    }, 200
