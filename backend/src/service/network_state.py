@@ -1,4 +1,4 @@
-from .engine import network_engine
+import network_engine
 
 
 def _device_snapshot(network):
