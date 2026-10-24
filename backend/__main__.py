@@ -19,4 +19,4 @@ app.register_blueprint(connection_bp)
 app.register_blueprint(routing_bp)
 
 if __name__ == "__main__":
-    app.run(debug=True, port=6050, use_reloader=False)
+    app.run(debug=True, port=6050)

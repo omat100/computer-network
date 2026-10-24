@@ -29,12 +29,13 @@ PYBIND11_MODULE(network_engine, m)
 
     py::class_<Network>(m, "Network")
         .def(py::init<>())
-        .def("addDevice", &Network::addDevice)
+        .def("addDevice", &Network::addDevice,
+             py::keep_alive<1, 2>())
         .def("addConnection", &Network::addConnection)
         .def("getDevice", &Network::getDevice,
-             py::return_value_policy::reference_internal)
+             py::return_value_policy::reference)
         .def("getConnections", &Network::getConnections)
-        .def("getAllDevices", &Network::getAllDevices);
+        .def("getAllDevices", &Network::getAllDevices, py::return_value_policy::reference_internal);
 
     py::class_<BFS>(m, "BFS")
         .def(py::init<>())

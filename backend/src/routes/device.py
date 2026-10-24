@@ -20,7 +20,7 @@ def get_devices():
     }, 200
 
 @device_bp.get("/<int:device_id>")
-def get_device(device_id):
+def get_device():
 
     device = NETWORK.getDevice(device_id)
     if device is None:

@@ -19,15 +19,15 @@ std::vector<int> BFS::findPath(const Network &network, int sourceId, int destina
     {
         int currentId = q.front();
         q.pop();
-        for (const Connection &comp : network.getConnections(currentId))
+        for (Connection *comp : network.getConnections(currentId))
         {
-            if (visited.count(comp.getDestinationId()))
+            if (visited.count(comp->getDestinationId()))
                 continue;
-            visited.insert(comp.getDestinationId());
+            visited.insert(comp->getDestinationId());
 
-            parent[comp.getDestinationId()] = currentId;
-            q.push(comp.getDestinationId());
-            if (comp.getDestinationId() == destinationId)
+            parent[comp->getDestinationId()] = currentId;
+            q.push(comp->getDestinationId());
+            if (comp->getDestinationId() == destinationId)
             {
                 finding = false;
                 break;
