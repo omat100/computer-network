@@ -4,7 +4,7 @@ routing_bp = Blueprint("routing", __name__, url_prefix="/api/routing")
 
 @routing_bp.post("/bfs")
 def route():
-    data = request.get_json(silent=True) or {}
+    data = request.get_json()
     source = data.get("source")
     if source is None:
         return {"error": "Not a valid source"}, 400

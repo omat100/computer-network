@@ -1,8 +1,0 @@
-services:
-  - type: web
-    name: network-backend
-    runtime: docker
-    healthCheckPath: /api/test/
-    envVars:
-      - key: CORS_ORIGINS
-        sync: false   # set to your Vercel URL, e.g. https://your-app.vercel.app

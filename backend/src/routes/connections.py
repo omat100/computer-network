@@ -4,7 +4,7 @@ connection_bp = Blueprint("connection", __name__, url_prefix="/api/connection")
 
 @connection_bp.post("/")
 def create_connection():
-    data = request.get_json(silent=True) or {}
+    data = request.get_json()
     
     source = data.get("source")
     destination = data.get("destination")
