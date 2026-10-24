@@ -1,0 +1,151 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #1f2937;
+  background: #f6f7fb;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; overflow: hidden; }
+button { font: inherit; cursor: pointer; }
+
+.page {
+  width: min(1220px, calc(100% - 32px));
+  height: 100dvh;
+  margin: 0 auto;
+  padding: 24px 0 16px;
+}
+
+.header,
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.label {
+  margin: 0 0 8px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+h1, h2, p { margin: 0; }
+h1 { font-size: 30px; letter-spacing: -.03em; }
+h2 { font-size: 18px; }
+
+.button {
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: 700;
+}
+.button-light { background: white; border: 1px solid #e2e8f0; color: #475569; }
+.button-light:hover { background: #f8fafc; }
+
+.intro { margin: 24px 0 14px; }
+.intro p { margin-top: 7px; color: #64748b; }
+
+.workspace { display: grid; grid-template-columns: 190px minmax(0, 1fr) 185px; gap: 12px; }
+.controls,
+.network-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: white;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, .05);
+}
+.controls { padding: 12px; }
+.controls h2 { margin-bottom: 14px; }
+.route-sidebar { padding: 14px 12px; border: 1px solid #e2e8f0; border-radius: 14px; background: white; box-shadow: 0 8px 24px rgba(15, 23, 42, .05); }
+.route-sidebar h2 { font-size: 16px; }
+.route-help { margin-top: 7px; color: #94a3b8; font-size: 11px; line-height: 1.4; }
+.route-sidebar label { display: block; margin: 18px 0 5px; color: #64748b; font-size: 11px; }
+.route-sidebar select { width: 100%; padding: 8px; border: 1px solid #e2e8f0; border-radius: 7px; background: white; color: #334155; }
+
+.device-button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+  background: #fff;
+  color: #1f2937;
+  text-align: left;
+  cursor: grab;
+}
+.device-button:active { cursor: grabbing; }
+.device-button:hover { border-color: #93c5fd; background: #eff6ff; }
+.device-button strong,
+.device-button small { display: block; }
+.device-button small { margin-top: 2px; color: #94a3b8; font-size: 10px; }
+.device-icon {
+  display: grid;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  border-radius: 7px;
+  font-size: 16px;
+}
+.computer-icon { background: #dbeafe; color: #2563eb; }
+.switch-icon { background: #dcfce7; color: #16a34a; }
+.help { margin-top: 12px; color: #94a3b8; font-size: 11px; line-height: 1.4; }
+.connect-box { margin-top: 14px; padding-top: 12px; border-top: 1px solid #eef2f7; }
+.connect-box h2 { margin-bottom: 12px; font-size: 15px; }
+.connect-box label { display: block; margin: 9px 0 4px; color: #64748b; font-size: 11px; }
+.connect-box select { width: 100%; padding: 8px; border: 1px solid #e2e8f0; border-radius: 7px; background: white; color: #334155; }
+.number-input { width: 100%; padding: 8px; border: 1px solid #e2e8f0; border-radius: 7px; color: #334155; }
+.button-blue { width: 100%; margin-top: 12px; background: #2563eb; color: white; }
+.button-blue:hover { background: #1d4ed8; }
+.button-green { width: 100%; margin-top: 12px; background: #16a34a; color: white; }
+.button-green:hover { background: #15803d; }
+.message { min-height: 16px; margin-top: 8px; color: #64748b; font-size: 11px; line-height: 1.35; }
+.route-box { margin-top: 14px; }
+.status.is-error { color: #dc2626; }
+.status.is-error span { background: #ef4444; }
+
+.network-card { min-height: 0; height: 100%; padding: 18px; }
+.card-header { padding-bottom: 18px; border-bottom: 1px solid #eef2f7; }
+.card-header p { margin-top: 4px; color: #94a3b8; font-size: 13px; }
+.status { color: #15803d; font-size: 12px; font-weight: 700; }
+.status span { display: inline-block; width: 7px; height: 7px; margin-right: 5px; border-radius: 50%; background: #22c55e; }
+
+.network { position: relative; height: calc(100% - 58px); min-height: 0; overflow: hidden; padding: 28px 10px; background-image: radial-gradient(#dbe4ef 1px, transparent 1px); background-size: 18px 18px; }
+.network.is-over { background-color: #eff6ff; outline: 2px dashed #93c5fd; outline-offset: -8px; }
+.connections { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.connections line { stroke: #94a3b8; stroke-width: 2; }
+.connections line.route { stroke: #16a34a; stroke-width: 4; }
+.connections text { fill: #475569; font-size: 12px; font-weight: 700; paint-order: stroke; stroke: white; stroke-width: 4px; stroke-linejoin: round; }
+.route-label { position: absolute; left: 14px; bottom: 14px; padding: 7px 10px; border-radius: 7px; background: #dcfce7; color: #166534; font-size: 12px; font-weight: 700; }
+.network-device { position: absolute; width: 104px; padding: 10px 8px; border: 1px solid #dbeafe; border-radius: 8px; background: #f8fbff; box-shadow: 0 5px 12px rgba(15, 23, 42, .08); text-align: center; cursor: grab; user-select: none; }
+.network-device:active { cursor: grabbing; }
+.network-device.switch { border-color: #bbf7d0; background: #f7fff9; }
+.network-device .device-icon { width: 24px; height: 24px; margin: 0 auto 5px; font-size: 13px; }
+.network-device strong { display: block; font-size: 12px; }
+.network-device small { display: block; margin-top: 3px; color: #94a3b8; font-size: 9px; }
+.delete-device { position: absolute; top: 5px; right: 6px; padding: 0 3px; border: 0; background: transparent; color: #94a3b8; font-size: 14px; line-height: 1; }
+.delete-device:hover { color: #dc2626; }
+.connect-port { position: absolute; top: 50%; width: 12px; height: 12px; padding: 0; border: 2px solid white; border-radius: 50%; background: #2563eb; box-shadow: 0 0 0 1px #2563eb; transform: translateY(-50%); cursor: crosshair; }
+.connect-port:hover { background: #16a34a; box-shadow: 0 0 0 2px #16a34a; }
+.network.is-connecting { cursor: crosshair; }
+.network.is-connecting .connect-port { background: #16a34a; box-shadow: 0 0 0 2px #16a34a; }
+.port-left { left: -7px; }
+.port-right { right: -7px; }
+.connection { display: none; }
+.empty { color: #94a3b8; font-size: 14px; }
+
+footer { margin-top: 10px; color: #94a3b8; font-size: 11px; text-align: center; }
+
+.workspace { height: calc(100dvh - 190px); min-height: 0; }
+
+@media (max-width: 680px) {
+  .page { padding-top: 24px; }
+  .intro { margin-top: 38px; }
+  .workspace { grid-template-columns: 1fr; height: auto; }
+  .network-card { min-height: 500px; }
+  .network { min-height: 400px; }
+}

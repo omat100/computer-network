@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Network</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="header">
+        <div>
+          <p class="label">Computer Networks</p>
+          <h1>Simple Network</h1>
+        </div>
+        <button id="resetButton" class="button button-light">Reload</button>
+      </header>
+
+      <section class="intro">
+        <h2>Build a small network</h2>
+        <p>Build a small network and test how data travels through it.</p>
+      </section>
+
+      <section class="workspace" aria-label="Network builder">
+        <aside class="controls">
+          <h2>Add a device</h2>
+          <button class="device-button" data-device="Computer" draggable="true">
+            <span class="device-icon computer-icon">▣</span>
+            <span>
+              <strong>Computer</strong>
+              <small>Add an end device</small>
+            </span>
+          </button>
+          <button class="device-button" data-device="Switch" draggable="true">
+            <span class="device-icon switch-icon">◆</span>
+            <span>
+              <strong>Switch</strong>
+              <small>Connect devices</small>
+            </span>
+          </button>
+          <p class="help">Drag devices onto the canvas. Drag a right port to another device to connect them.</p>
+          <div class="connect-box">
+            <h2>Connect devices</h2>
+            <label for="sourceSelect">From</label>
+            <select id="sourceSelect"></select>
+            <label for="targetSelect">To</label>
+            <select id="targetSelect"></select>
+            <label for="connectionCost">Edge weight</label>
+            <input id="connectionCost" class="number-input" type="number" min="1" step="1" value="1" />
+            <button id="connectButton" class="button button-blue">Add connection</button>
+            <p id="connectionMessage" class="message" role="status"></p>
+          </div>
+        </aside>
+
+        <section class="network-card">
+          <div class="card-header">
+            <div>
+              <h2>Your network</h2>
+              <p id="deviceCount">2 devices</p>
+            </div>
+            <span id="apiStatus" class="status"><span></span> Connecting</span>
+          </div>
+          <div id="network" class="network" aria-live="polite">
+            <p class="empty">Drag a device here to get started.</p>
+          </div>
+        </section>
+
+        <aside class="route-sidebar">
+          <h2>Routing simulator</h2>
+          <p class="route-help">Choose two devices to find a path through the network.</p>
+          <label for="routeSource">Start</label>
+          <select id="routeSource"></select>
+          <label for="routeTarget">End</label>
+          <select id="routeTarget"></select>
+          <button id="routeButton" class="button button-green">Find route</button>
+          <p id="routeMessage" class="message" role="status"></p>
+        </aside>
+      </section>
+
+      <footer>Made with simple HTML, CSS and JavaScript.</footer>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

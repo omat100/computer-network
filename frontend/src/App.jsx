@@ -687,8 +687,8 @@ function App() {
             <Logo size={20} />
           </span>
           <div className="brand-copy">
-            <span className="brand-name">netmap</span>
-            <span className="brand-tag">topology studio</span>
+            <span className="brand-name">NetMap</span>
+            <span className="brand-tag">simple network map</span>
           </div>
         </div>
 

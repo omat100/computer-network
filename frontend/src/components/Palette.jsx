@@ -51,10 +51,7 @@ export default function Palette({
         ))}
       </div>
 
-      <p className="palette-tip">
-        Drag a card onto the canvas, then pull from a node&apos;s right port to
-        another node&apos;s left port to create a cable.
-      </p>
+      <p className="palette-tip">You can move devices around after adding them.</p>
 
       <div className="palette-actions">
         <button
@@ -64,7 +61,7 @@ export default function Palette({
           disabled={disabled}
         >
           <LayoutGrid size={14} />
-          Auto layout
+          Arrange devices
         </button>
         <button type="button" className="palette-action" onClick={onFitView}>
           <Maximize size={14} />

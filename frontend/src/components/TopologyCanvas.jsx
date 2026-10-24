@@ -35,11 +35,10 @@ function EmptyBoard({ onCreate, onLoadSample, seeding }) {
       <span className="empty-mark" aria-hidden="true">
         <Network size={24} strokeWidth={1.7} />
       </span>
-      <p className="eyebrow">Empty network</p>
-      <h2>Build your first topology</h2>
+      <p className="eyebrow">Your network is empty</p>
+      <h2>Start with a device</h2>
       <p className="empty-copy">
-        Place a few devices, cable their ports, then trace a route across the
-        graph.
+        Add computers and switches, then connect them to see how your network works.
       </p>
       <div className="empty-actions">
         <button
@@ -68,11 +67,10 @@ function EmptyBoard({ onCreate, onLoadSample, seeding }) {
         disabled={seeding}
       >
         {seeding ? <Loader2 size={14} className="spin" /> : <Sparkles size={14} />}
-        {seeding ? 'Building sample…' : 'Load a sample network'}
+        {seeding ? 'Building sample…' : 'Try a sample network'}
       </button>
       <p className="empty-tip">
-        Tip: pull from a node&apos;s right port to another node&apos;s left port
-        to create a cable.
+        Tip: connect two devices by dragging from one port to another.
       </p>
     </div>
   )
@@ -287,9 +285,9 @@ export default function TopologyCanvas({
     <div className="topology-workspace">
       <aside className="tool-sidebar" aria-label="Device palette">
         <div className="tool-sidebar-head">
-          <p className="eyebrow">Build</p>
-          <h2>Network devices</h2>
-          <p>Drag a device onto the canvas, or click a card to place one.</p>
+          <p className="eyebrow">Add to your map</p>
+          <h2>Devices</h2>
+          <p>Click a device to add it to the canvas.</p>
         </div>
         <Palette
           disabled={paletteDisabled}
