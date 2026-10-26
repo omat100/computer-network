@@ -1,43 +1,38 @@
 #include "Network.h"
 
-void Network::addDevice(Device *device)
+void Network::addDevice(const Device &device)
 {
-    if (!device)
-        return;
-    devices.emplace(device->getId(), device); // if id exists dont overwrite
-    adjacencyList[device->getId()];
+    devices.emplace(device.getId(), device); // if id exists dont overwrite
+    adjacencyList[device.getId()];
 }
 void Network::addConnection(int sourceId, int destinationId, int cost)
 {
-    Connection *connection = new Connection(destinationId, cost);
-    for (Connection *connection : adjacencyList[sourceId])
+    for (const Connection &existing : adjacencyList[sourceId])
     {
-        if (connection->getDestinationId() == destinationId)
+        if (existing.getDestinationId() == destinationId)
             return;
     }
-    adjacencyList[sourceId].push_back(connection);
+    adjacencyList[sourceId].emplace_back(destinationId, cost);
 }
 
-Device *Network::getDevice(int id) const
+Device *Network::getDevice(int id)
 {
     auto it = devices.find(id);
     if (it == devices.end())
         return nullptr;
-    return it->second;
+    return &it->second;
 }
-std::vector<Connection *> Network::getConnections(int id) const
+std::vector<Connection> Network::getConnections(int id) const
 {
     auto it = adjacencyList.find(id);
     if (it == adjacencyList.end())
         return {};
     return it->second;
 }
-std::vector<Device *> Network::getAllDevices() const
+std::vector<Device> Network::getAllDevices() const
 {
-    std::vector<Device *> result;
-
+    std::vector<Device> result;
     for (const auto &pair : devices)
         result.push_back(pair.second);
-
     return result;
 }
