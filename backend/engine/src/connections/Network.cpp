@@ -12,7 +12,7 @@ void Network::addConnection(int sourceId, int destinationId, int cost)
         if (existing.getDestinationId() == destinationId)
             return;
     }
-    adjacencyList[sourceId].emplace_back(destinationId, cost);
+    adjacencyList[sourceId].emplace_back(destinationId, cost); // this is the magic of emplace_back we dont need a constructor it creates one by itself unlike push_back
 }
 
 Device *Network::getDevice(int id)
