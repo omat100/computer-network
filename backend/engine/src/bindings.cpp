@@ -5,7 +5,7 @@
 #include "Connection.h"
 #include "Network.h"
 #include "BFS.h"
-
+#include "Dijkstra.h"
 namespace py = pybind11;
 
 PYBIND11_MODULE(network_engine, m)
@@ -39,4 +39,8 @@ PYBIND11_MODULE(network_engine, m)
     py::class_<BFS>(m, "BFS")
         .def(py::init<>())
         .def("findPath", &BFS::findPath);
+
+    py::class_<Dijkstra>(m, "Dijkstra")
+        .def(py::init<>())
+        .def("findPath", &Dijkstra::findPath);
 }

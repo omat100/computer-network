@@ -12,6 +12,7 @@ pybind11_add_module(network_engine
     src/bindings.cpp
     src/connections/Network.cpp
     src/routing/BFS.cpp
+    src/routing/Dijkstra.cpp
 )
 
 target_include_directories(network_engine PRIVATE

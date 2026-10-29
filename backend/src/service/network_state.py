@@ -105,4 +105,4 @@ class NetworkState:
 
 
 NETWORK = NetworkState()
-BFS = network_engine.BFS()
+BFS = network_engine.Dijkstra() # Dijkstra
