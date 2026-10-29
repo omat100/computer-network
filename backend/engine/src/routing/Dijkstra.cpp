@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <algorithm>
 #include <utility>
+// #include <iostream>
 
 std::vector<int> Dijkstra::findPath(const Network &network, int sourceId, int destinationId)
 {
@@ -46,6 +47,7 @@ std::vector<int> Dijkstra::findPath(const Network &network, int sourceId, int de
             int newCost = currentCost + comp.getCost();
 
             auto it = dist.find(nextId);
+            // std::cerr << currentId << " -> " << nextId << " cost " << comp.getCost() << "\n";
             if (it == dist.end() || newCost < it->second)
             {
                 dist[nextId] = newCost;

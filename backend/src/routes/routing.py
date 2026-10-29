@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from ..service.network_state import NETWORK, BFS
+from ..service.network_state import NETWORK, PATHFINDER
 routing_bp = Blueprint("routing", __name__, url_prefix="/api/routing")
 
 @routing_bp.post("/bfs")
@@ -17,6 +17,6 @@ def route():
     if NETWORK.getDevice(destination) is None:
         return {"error": "No such destination exists"}, 400
 
-    path = BFS.findPath(NETWORK.engine, source, destination)
-
+    path = PATHFINDER.findPath(NETWORK.engine, source, destination)
+    print("path:", list(path), flush=True)
     return {"path":list(path)}, 200
